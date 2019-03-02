@@ -1,2 +1,2 @@
-# hordesHelp
-My helper for building warmachine/hordes list
+Work organizator.
+To help the lead of teams to lead the work from different building.
