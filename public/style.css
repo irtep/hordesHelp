@@ -1,0 +1,81 @@
+* {
+ margin: 5px;
+ padding: 5px;
+}
+
+
+#upperhalf {
+  display: flex;
+  font-size: 16px;
+}
+#chooseSetup {
+  background-color: lightBlue;
+  width: 50%;
+  margin: 5px;
+  padding: 5px;
+}
+#available {
+  flex: 1;
+}
+
+
+
+
+#remover {
+  background-color: pink;
+  width: 450px;
+  margin: 5px;
+  padding: 5px;
+} 
+#deleterButton {
+  background-color: crimson;
+  color: white;
+}
+.deleters {
+ background-color: crimson;
+ color: white;
+}
+.orders {
+  color: navy;
+}
+#jonot {
+  display: flex;
+}
+#sahaQueue {
+  width: 50%;
+  background-color: rgb(73, 225, 242);
+}
+#muokkausQueue {
+  flex: 1;
+  background-color: rgb(73,250,150);
+}
+#infot {
+  display: flex;
+  font-size: 16px;
+}
+#info1 {
+  width: 50%;
+}
+#info2 {
+  flex: 1;
+}
+#errorMessage {
+  color: crimson;
+  font-size: 20px;
+}
+#colorRed {
+  color: darkRed;
+}
+#reloadButton {
+  background-color: rgb(73, 251, 53);
+  width: 250px;
+  height: 70px;
+  font-size: 20px;
+  color: black;
+}
+.backgCyan {
+  background-color: rgb(73, 225, 242);
+}
+.backgGreen {
+  background-color: rgb(73,250,150);  
+}
