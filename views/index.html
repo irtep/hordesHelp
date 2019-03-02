@@ -25,43 +25,20 @@
           <option value="retribution">Retribution</option>
           <option value="cryx">Cryx</option>
         </select><br>
+        
         Select pointlimit:<br>
         <input id= "pointLimit" value= "50"/><br>
-        <input type= "button" name= "submitSetup" value= "submit army and pointlimit" onclick= "submitSetup()">
+        <input type= "button" name= "submitSetup" value= "submit army and pointlimit" onclick= "submitSetup()"><br><br>
+        
+        Points left: <span id= "pointsLeft"></span> Battlegroup points left: <span id= "bgPointsLeft"></span><br>
+        <div id= "chosenArmy"></div>
+        
       </p>
-      <p id= "available">
+      <div id= "available">
         Units for this faction:
-      </p>
-      <p id= "availableCards">
-        <br>
-        <p id= "cardsHere">  
-        </p>
-      </p>
-    </div>
-    
-    <p id= "remover">
-    Merkkaa valmiiksi tai poista sahaus/muokkauslistasta työ, jonka jonotusnumero on: <br>
-    <input id= "deleterChoose" name= "deleterChoose" type= "radio" value= "sahaus"><label for= "deleterChoose">
-      <span class= "backgCyan">sahaus</span></label>
-    <input id= "deleterChoose2" name= "deleterChoose" type= "radio" value= "muokkaus"><label for= "deleterChoose2">
-      <span class= "backgGreen">muokkaus</span></label>
-      <!--
-    <input id= "deleterChoose3" name= "deleterChoose" type= "radio" value= "valmiit"><label for= "deleterChoose3">valmiit</label>
-     -->
-    <input type= "text" id= "deleterNumber" size= "3">
-    <input type= "button" id= "deleterButton" value= "Poista" class= "buttonz">
-    </p>
-      <div id= "infot">
-        <div id= "info1">Sahalle: </div>
-        <div id= "info2">Muokkaukseen:</div>
+        <br><span id= "cardsHere"></span>
       </div>
-    <div id= "jonot">  
-      <p id= "sahaQueue"></p>
-      <p id= "muokkausQueue"></p>  
     </div>
-    <p id= "colorRed">
-    Viimeisimmät valmiit/poistetut: <br>
-     <div id= "deletedQueue"></div>
-    </p>
+  
     </body>
 </html>
