@@ -1,66 +1,152 @@
-const cards = [
-  // Cygnar
-    // warcasters:
-  {name: 'Commander Coleman Stryker', type: 'warcaster', bgPoints: 30, pointCost: 0, factions: ['cygnar']},
-  {name: 'Captain Allister Caine', type: 'warcaster', bgPoints: 27, pointCost: 0, factions: ['cygnar']},
-    // warjacks:
-    // units:
-    // solos:
-  
-  // Trollbloods
-    // warlocks
-  {name: 'Ironbra', type: 'warlock', bgPoints: 27, pointCost: 0, factions: ['trollbloods']},
-  {name: 'Madrak Ironhide, Thornwood Chieftain', type: 'warcaster', bgPoints: 29, pointCost: 0, factions: ['trollbloods']},
-    // warbeasts:
-    // units:
-    // solos:  
-  
-  // Circle
-    // warlocks
-  {name: 'Adri', type: 'warlock', bgPoints: 32, pointCost: 0, factions: ['circle']},
-  {name: 'Mohsar the desertwalker', type: 'warcaster', bgPoints: 27, pointCost: 0, factions: ['circle']},
-    // warbeasts:
-    // units:
-    // solos:  
-  
-  // Khador
-    // warcasters:
-  {name: 'Adri de invierno', type: 'warcaster', bgPoints: 29, pointCost: 0, factions: ['khador']},
-  {name: 'Sergei Zoktavir', type: 'warcaster', bgPoints: 28, pointCost: 0, factions: ['khador']},
-    // warjacks:
-    // units:
-    // solos:
-  
-  // Retribution
-    // warcasters:
-  {name: "Kaelyssa Night's Whisper", type: 'warcaster', bgPoints: 29, pointCost: 0, factions: ['retribution']},
-    // warjacks:
-    // units:
-    // solos:  
-  
-    // Cryx
-    // warcasters:
-  {name: 'Warwitch Deneghra', type: 'warcaster', bgPoints: 26, pointCost: 0, factions: ['cryx']},
-  {name: 'Goreshade the cursed', type: 'warcaster', bgPoints: 28, pointCost: 0, factions: ['cryx']},
-  {name: 'Witch Coven of Garlghast', type: 'warcaster', bgPoints: 26, pointCost: 0, factions: ['cryx']}
-    // warjacks:
-    // units:
-    // solos:
-];
+let pointsLeft;
+let bgPointsLeft;
+
+let chosenArmy = [];
+
 function submitSetup(){
   const factionSelect = document.getElementById('factionSelector');
   const selectedPointsLimit = document.getElementById('pointLimit');
   
+  updateCards();
+  resetPoints();
+  
+  // reset army
+  chosenArmy = [];
+  
   console.log('submited: ', factionSelect[factionSelect.selectedIndex].value, selectedPointsLimit.value);
 }
 
-window.onload = ()=> {
+function removeFromArmy(who){
+  let chosenGuy;
+  // find chosen trooper from cards:
+  for (let i = 0; i < chosenArmy.length; i++) {
+  
+    if (who === chosenArmy[i].name) {
+      chosenGuy = i;    
+    }
+  }
+  
+  chosenArmy.splice(chosenGuy, 1);
+  updatePoints();
+  updateArmyList();
+}
+
+function addToArmy(idOfButton) {
+  let chosenTrooper;
+  const showArmy = document.getElementById('showArmy');
+  
+  // find chosen trooper from cards:
+  for (let i = 0; i < cards.length; i++) {
+  
+    if (idOfButton === cards[i].name) {
+      chosenTrooper = cards[i]     
+    }
+  }
+  
+  chosenArmy.push(chosenTrooper);
+  updatePoints();
+  
+  // add to index.html:
+  // if lock or caster
+  if (chosenTrooper.type === 'warlock' || chosenTrooper.type === 'warcaster'){
+    showArmy.innerHTML = showArmy.innerHTML + chosenTrooper.type + ': ' + chosenTrooper.name + '(+'+chosenTrooper.bgPoints+' battlegroup points)'+
+    '<input type= "button" id= "'+chosenTrooper.name+'" value= "remove" onclick= "removeFromArmy(this.id)"/><br> ' 
+  } else {
+    showArmy.innerHTML = showArmy.innerHTML + chosenTrooper.type + ': ' + chosenTrooper.name + '(+'+chosenTrooper.pointCost+' points)'+
+    '<input type= "button" id= "'+chosenTrooper.name+'" value= "remove" onclick= "removeFromArmy(this.id)"/><br> ' 
+  }
+}
+
+// updates showArmy place
+function updateArmyList(){
+  const showArmy = document.getElementById('showArmy');
+  
+  showArmy.innerHTML = '';
+  
+  for (let i = 0; i < chosenArmy.length; i++) {
+
+    if (chosenArmy[i].type === 'warlock' || chosenArmy[i].type === 'warcaster'){
+      showArmy.innerHTML = showArmy.innerHTML + chosenArmy[i].type + ': ' + chosenArmy[i].name + '(+'+chosenArmy[i].bgPoints+' battlegroup points)'+
+      '<input type= "button" id= "'+chosenArmy[i].name+'" value= "remove" onclick= "removeFromArmy(this.id)"/><br> ' 
+    } else {
+      showArmy.innerHTML = showArmy.innerHTML + chosenArmy[i].type + ': ' + chosenArmy[i].name + '(+'+chosenArmy[i].pointCost+' points)'+
+      '<input type= "button" id= "'+chosenArmy[i].name+'" value= "remove" onclick= "removeFromArmy(this.id)"/><br> ' 
+    }  
+  }
+  
+}
+
+function updatePoints(){
+  console.log('update points chosenArmy: ', chosenArmy);
+  pointsLeft = document.getElementById('pointLimit').value;
+  bgPointsLeft = 0;
+  let unitPoints = 0;
+  let jackAndBeastPoints = 0;
+  let exceedingPoints = 0;
+  
+  // gather points from chosen units.
+  if (chosenArmy.length > 0) {
+    for (let i = 0; i < chosenArmy.length; i++) {
+      // if warcaster or warlock found:
+      if (chosenArmy[i].type === 'warlock' || chosenArmy[i].type === 'warcaster'){
+        bgPointsLeft = chosenArmy[i].bgPoints;
+      }
+      // if beast or jack
+      if (chosenArmy[i].type === 'warjack' || chosenArmy[i].type === 'warbeast'){
+        jackAndBeastPoints = jackAndBeastPoints + chosenArmy[i].pointCost;
+      }
+      // if solo or unit
+      if (chosenArmy[i].type === 'solo' || chosenArmy[i].type === 'unit'){
+        unitPoints = unitPoints + chosenArmy[i].pointCost;
+      }
+    }
+  }
+  
+  // deal with warjack/beast points:
+  exceedingPoints = jackAndBeastPoints - bgPointsLeft;
+  if (exceedingPoints < 0) { exceedingPoints = 0; }
+  unitPoints = unitPoints + exceedingPoints;
+  //update:
+  pointsLeft = pointsLeft - unitPoints;
+  document.getElementById('pointsLeft').innerHTML = pointsLeft;
+  document.getElementById('bgPointsLeft').innerHTML = bgPointsLeft - jackAndBeastPoints;
+}
+
+function updateCards(){
   const availC = document.getElementById('cardsHere');
+  availC.innerHTML = '<br>';
   
   // make available cards buttons
   for (let i = 0; i < cards.length; i++){
     const currentName = cards[i].name;
-    availC.innerHTML = availC.innerHTML + '<input type = "button" value='+currentName+ ' class= "troops" onclick="addToList(this.value)" >' + '</input>'
-    + '<br>'; 
+    const currentType = cards[i].type;
+    const currentPoints = cards[i].pointCost;
+    const factionSelect = document.getElementById('factionSelector');
+    
+    for (let i2 = 0; i2 < cards[i].factions.length; i2++) {
+      
+      if (factionSelect[factionSelect.selectedIndex].value === cards[i].factions[i2]) {
+        let unitsClass;
+        
+        availC.innerHTML = availC.innerHTML + '<span class="' + currentType + '"> '+
+        currentName+ ' ' + currentType + '. Point cost: ' + currentPoints + ' </span>' + 
+        '<input type = "button" id="'+currentName+ '" class= "troopButtons" onclick="addToArmy(this.id)" value= "add this" ><br>';
+      }
+    }
   }
+}
+
+function resetPoints() {
+  pointsLeft = document.getElementById('pointLimit').value;
+  bgPointsLeft = 0;
+  
+  document.getElementById('pointsLeft').innerHTML = pointsLeft;
+  document.getElementById('bgPointsLeft').innerHTML = bgPointsLeft;
+
+}
+
+window.onload = ()=> {
+  
+  resetPoints();
+  updateCards();
 };
