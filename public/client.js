@@ -3,67 +3,6 @@ let bgPointsLeft;
 
 let chosenArmy = [];
 
-const cards = [
-  // Cygnar
-    // warcasters:
-  {name: 'Stryker1', type: 'warcaster', bgPoints: 30, pointCost: 0, factions: ['cygnar']},
-  {name: 'Caine2', type: 'warcaster', bgPoints: 27, pointCost: 0, factions: ['cygnar']},
-    // warjacks:
-  {name: 'Defender', type: 'warjack', bgPoints: 0, pointCost: 16, factions: ['cygnar']},
-  {name: 'Avenger', type: 'warjack', bgPoints: 0, pointCost: 17, factions: ['cygnar']},
-  {name: 'Charger', type: 'warjack', bgPoints: 0, pointCost: 9, factions: ['cygnar']},
-  {name: 'Lancer', type: 'warjack', bgPoints: 0, pointCost: 10, factions: ['cygnar']},
-  {name: 'Cyclone', type: 'warjack', bgPoints: 0, pointCost: 13, factions: ['cygnar']},
-    // units:,
-  {name: 'Rangers', type: 'unit', bgPoints: 0, pointCost: 9, factions: ['cygnar']},
-    // solos:,
-  {name: 'Jr_warcaster', type: 'solo', bgPoints: 0, pointCost: 4, factions: ['cygnar']},
-  
-  // Trollbloods
-    // warlocks
-  {name: 'Ironbra', type: 'warlock', bgPoints: 27, pointCost: 0, factions: ['trollbloods']},
-  {name: 'Madrak1', type: 'warlock', bgPoints: 29, pointCost: 0, factions: ['trollbloods']},
-    // warbeasts:
-    // units:
-    // solos:  
-  
-  // Circle
-    // warlocks
-  {name: 'Adri', type: 'warlock', bgPoints: 32, pointCost: 0, factions: ['circle']},
-  {name: 'Mohsar', type: 'warlock', bgPoints: 27, pointCost: 0, factions: ['circle']},
-    // warbeasts:
-    // units:
-    // solos:  
-  
-  // Khador
-    // warcasters:
-  {name: 'Adri_invierno', type: 'warcaster', bgPoints: 29, pointCost: 0, factions: ['khador']},
-  {name: 'Sergei', type: 'warcaster', bgPoints: 28, pointCost: 0, factions: ['khador']},
-    // warjacks:
-    // units:
-    // solos:
-  
-  // Retribution
-    // warcasters:
-  {name: "Kaelyssa", type: 'warcaster', bgPoints: 29, pointCost: 0, factions: ['retribution']},
-    // warjacks:
-    // units:
-    // solos:  
-  
-    // Cryx
-    // warcasters:
-  {name: 'Deneghra1', type: 'warcaster', bgPoints: 26, pointCost: 0, factions: ['cryx']},
-  {name: 'Goreshade2', type: 'warcaster', bgPoints: 28, pointCost: 0, factions: ['cryx']},
-  {name: 'Witch_Coven', type: 'warcaster', bgPoints: 26, pointCost: 0, factions: ['cryx']},
-    // warjacks:
-    // units:
-    // solos:
-  /* or Crucible Guard, Cryx, Cygnar, Khador, or Protectorate. */
-  // Mercenaries and Minion
-  
-  {name: '6x_steelh_rifleman', type: 'unit', bgPoints: 0, pointCost: 8, factions: ['crucible', 'cryx', 'cygnar', 'khador', 'protectorate']},
-  {name: '10x_steelh_rifleman', type: 'unit', bgPoints: 0, pointCost: 14, factions: ['crucible', 'cryx', 'cygnar', 'khador', 'protectorate']}
-];
 function submitSetup(){
   const factionSelect = document.getElementById('factionSelector');
   const selectedPointsLimit = document.getElementById('pointLimit');
@@ -77,8 +16,24 @@ function submitSetup(){
   console.log('submited: ', factionSelect[factionSelect.selectedIndex].value, selectedPointsLimit.value);
 }
 
+function removeFromArmy(who){
+  let chosenGuy;
+  // find chosen trooper from cards:
+  for (let i = 0; i < chosenArmy.length; i++) {
+  
+    if (who === chosenArmy[i].name) {
+      chosenGuy = i;    
+    }
+  }
+  
+  chosenArmy.splice(chosenGuy, 1);
+  updatePoints();
+  updateArmyList();
+}
+
 function addToArmy(idOfButton) {
   let chosenTrooper;
+  const showArmy = document.getElementById('showArmy');
   
   // find chosen trooper from cards:
   for (let i = 0; i < cards.length; i++) {
@@ -90,6 +45,35 @@ function addToArmy(idOfButton) {
   
   chosenArmy.push(chosenTrooper);
   updatePoints();
+  
+  // add to index.html:
+  // if lock or caster
+  if (chosenTrooper.type === 'warlock' || chosenTrooper.type === 'warcaster'){
+    showArmy.innerHTML = showArmy.innerHTML + chosenTrooper.type + ': ' + chosenTrooper.name + '(+'+chosenTrooper.bgPoints+' battlegroup points)'+
+    '<input type= "button" id= "'+chosenTrooper.name+'" value= "remove" onclick= "removeFromArmy(this.id)"/><br> ' 
+  } else {
+    showArmy.innerHTML = showArmy.innerHTML + chosenTrooper.type + ': ' + chosenTrooper.name + '(+'+chosenTrooper.pointCost+' points)'+
+    '<input type= "button" id= "'+chosenTrooper.name+'" value= "remove" onclick= "removeFromArmy(this.id)"/><br> ' 
+  }
+}
+
+// updates showArmy place
+function updateArmyList(){
+  const showArmy = document.getElementById('showArmy');
+  
+  showArmy.innerHTML = '';
+  
+  for (let i = 0; i < chosenArmy.length; i++) {
+
+    if (chosenArmy[i].type === 'warlock' || chosenArmy[i].type === 'warcaster'){
+      showArmy.innerHTML = showArmy.innerHTML + chosenArmy[i].type + ': ' + chosenArmy[i].name + '(+'+chosenArmy[i].bgPoints+' battlegroup points)'+
+      '<input type= "button" id= "'+chosenArmy[i].name+'" value= "remove" onclick= "removeFromArmy(this.id)"/><br> ' 
+    } else {
+      showArmy.innerHTML = showArmy.innerHTML + chosenArmy[i].type + ': ' + chosenArmy[i].name + '(+'+chosenArmy[i].pointCost+' points)'+
+      '<input type= "button" id= "'+chosenArmy[i].name+'" value= "remove" onclick= "removeFromArmy(this.id)"/><br> ' 
+    }  
+  }
+  
 }
 
 function updatePoints(){
