@@ -12,8 +12,8 @@ function submitSetup(){
   
   // reset army
   chosenArmy = [];
+  updateArmyList();
   
-  console.log('submited: ', factionSelect[factionSelect.selectedIndex].value, selectedPointsLimit.value);
 }
 
 function removeFromArmy(who){
@@ -77,7 +77,6 @@ function updateArmyList(){
 }
 
 function updatePoints(){
-  console.log('update points chosenArmy: ', chosenArmy);
   pointsLeft = document.getElementById('pointLimit').value;
   bgPointsLeft = 0;
   let unitPoints = 0;
