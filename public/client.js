@@ -66,10 +66,10 @@ function updateArmyList(){
   for (let i = 0; i < chosenArmy.length; i++) {
 
     if (chosenArmy[i].type === 'warlock' || chosenArmy[i].type === 'warcaster'){
-      showArmy.innerHTML = showArmy.innerHTML + chosenArmy[i].type + ': ' + chosenArmy[i].name + '(+'+chosenArmy[i].bgPoints+' battlegroup points)'+
+      showArmy.innerHTML = showArmy.innerHTML + chosenArmy[i].type + ': ' + chosenArmy[i].name + ' (+'+chosenArmy[i].bgPoints+' battlegroup points)'+
       '<input type= "button" id= "'+chosenArmy[i].name+'" value= "remove" onclick= "removeFromArmy(this.id)"/><br> ' 
     } else {
-      showArmy.innerHTML = showArmy.innerHTML + chosenArmy[i].type + ': ' + chosenArmy[i].name + '(+'+chosenArmy[i].pointCost+' points)'+
+      showArmy.innerHTML = showArmy.innerHTML + chosenArmy[i].type + ': ' + chosenArmy[i].name + ' (+'+chosenArmy[i].pointCost+' points)'+
       '<input type= "button" id= "'+chosenArmy[i].name+'" value= "remove" onclick= "removeFromArmy(this.id)"/><br> ' 
     }  
   }
