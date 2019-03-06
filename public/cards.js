@@ -92,7 +92,7 @@ const cards = [
     // warjacks:
   {name: 'Slayer', type: 'warjack', bgPoints: 0, pointCost: 10, factions: ['cryx']},
   {name: 'Deathripper', type: 'warjack', bgPoints: 0, pointCost: 6, factions: ['cryx']},
-  {name: 'Defiler', type: 'warjack', bgPoints: 0, pointCost: 6, factions: ['cryx']},
+  {name: 'Defiler', type: 'warjack', bgPoints: 0, pointCost: 8, factions: ['cryx']},
   {name: 'Desecrator', type: 'warjack', bgPoints: 0, pointCost: 14, factions: ['cryx']},
   {name: 'Harrower', type: 'warjack', bgPoints: 0, pointCost: 16, factions: ['cryx']},
   {name: 'Leviathan', type: 'warjack', bgPoints: 0, pointCost: 16, factions: ['cryx']},

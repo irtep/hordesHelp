@@ -13,6 +13,10 @@
     <h2>
     HordesHelp
     </h2>
+    <input type= "button" value= "load army" onclick= "saveLoad(this.value)"/>
+    <input type= "button" value= "save army" onclick= "saveLoad(this.value)"/>
+    <span id= "feedback"></span>
+    <br>
     <div id= "upperhalf">
       <p id= "chooseSetup"> <!-- LEFT SIDE -->
         <b>Choose army:</b> <br>
@@ -28,6 +32,8 @@
         Select pointlimit:<br>
         <input id= "pointLimit" value= "50"/><br>
         <input type= "button" name= "submitSetup" value= "submit army and pointlimit" onclick= "submitSetup()"><br><br>
+        Name of army: <input id= "nameOfArmy" type= "text"/> (Fill this if you want to save the army)<br>
+        Password: <input id= "passwordField" type= "password"/> (Fill this if you want to save the army)<br>
         
         Points left: <span id= "pointsLeft"></span> Battlegroup points left: <span id= "bgPointsLeft"></span><br>
         <span id= "showArmy"></span>
@@ -41,5 +47,6 @@
   
     </body>
     <script src="/cards.js"></script>
+    <script src="/dataBaseCommands.js"></script>
     <script src="/client.js"></script>
 </html>

@@ -1,7 +1,50 @@
 let pointsLeft;
 let bgPointsLeft;
+var armiesInDb;
 
 let chosenArmy = [];
+
+function clearFeedback(){
+        
+  setTimeout(() => { 
+    feedback.innerHTML = '';  
+  }, 1000); //timer
+}
+
+function saveLoad(whatButton){
+  const nameSpace = document.getElementById('nameOfArmy');
+  const passField = document.getElementById('passwordField');
+  const feedback = document.getElementById('feedback');
+  console.log('what button ', whatButton);
+
+  switch (whatButton) {
+    
+    case 'save army':
+      if (passField.value.length > 2) {
+        
+        if (nameSpace.value.length > 1 && chosenArmy.length > 1) {  
+          const armyListToBeUpdated = {name: nameSpace.value, list: chosenArmy, psw: passField.value};
+          console.log('armiesInBb', armiesInDb);
+          armiesInDb.push(armyListToBeUpdated);
+          updateListsInDB(armiesInDb); 
+          
+        } else { feedback.innerHTML = 'ERROR: army need to have a name, that has atleast 2 characters. And atleast two selected units.';
+          console.log('r', nameSpace.value.length, chosenArmy.length);       
+        }
+        
+      } else {
+        
+        feedback.innerHTML = 'ERROR: password incorrect!';
+        clearFeedback();
+      }
+    break;
+    
+    case 'load army':
+    break;
+      
+    default: console.log('not found button at saveLoad function');  
+  }
+}
 
 function submitSetup(){
   const factionSelect = document.getElementById('factionSelector');
@@ -148,4 +191,10 @@ window.onload = ()=> {
   
   resetPoints();
   updateCards();
+  
+  // get list of saved armies:
+  updateListsFromDB();
+  // update them to their place.
+  console.log('aIDb: ', armiesInDb);
+  
 };
