@@ -20,6 +20,9 @@
 #cardsHere {
   text-align: left;
 }
+#feedback{
+  color: red;
+}
 /* UPPER HALF ENDS*/
 
 .warcaster {

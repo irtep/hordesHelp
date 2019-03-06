@@ -6,9 +6,8 @@ const pasw = process.env.SECRET2;
 app.use(express.static('public'));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 // database access:
-// copied from my other work. will be used to reload saved armies.
-/*
 const mongoose = require('mongoose'); 
 const mongoDB = process.env.SECRET1; // admin
 mongoose.connect(mongoDB);
@@ -16,28 +15,16 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 const Schema = mongoose.Schema;
 
-const sahaListSchema = new Schema( {
-  sahaList: {
-    type: Array    
-  } 
-});
-const muokkausListSchema = new Schema( {
-  muokkausList: {
-    type: Array    
-  } 
-});
-const deletedListSchema = new Schema( {
-  deletedList: {    
+const armyListSchema = new Schema( {
+  armyList: {
     type: Array    
   } 
 });
 
-const sahaListModel = mongoose.model('sahaListModel', sahaListSchema ); // for sahalist
-const muokkausModel = mongoose.model('muokkausModel', muokkausListSchema ); // for muokkaus
-const deletedModel = mongoose.model('deletedModel', deletedListSchema ); // for deleteds
+const armyListModel = mongoose.model('armyListModel', armyListSchema ); // for sahalist
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-*/
+
 // GET handlers.
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/views/index.html');
@@ -45,38 +32,25 @@ app.get('/', function(request, response) {
 
 
 // POST handlers: will be used for database access, to save and load armies.
-/*
 app.post('/showAll', (request, response) => {
   
   const received = request.body.MSG;
-  let sahaList;
-  let muokkausList;
-  let deletedList;
-  let allLists;
+  let armyList;
+  let responding;
   
   console.log('Post with showAll received: ', received);
   switch (received){
-    case ('show'):  
-      deletedModel.find((err, results1) => {
+    case ('show'):
+      armyListModel.find((err, results) => {
       if (err) console.log(err);
-      deletedList = results1;  
-      console.log('result for deletdlist search: ', results1);
-      });
-      sahaListModel.find((err, results2) => {
-      if (err) console.log(err);
-      sahaList = results2;   
-        console.log('result for sahalist search: ', results2);
-      });
-      muokkausModel.find((err, results3) => {
-      if (err) console.log(err);
-      muokkausList = results3;  
-        console.log('result for muokkauslist search: ', results3);
+      armyList = results;   
+        console.log('result for sahalist search: ', results);
       });
       setTimeout(() => {  // timed so that there is time to add the data
-        allLists = [sahaList, muokkausList, deletedList];  
-        const sending = JSON.stringify(allLists);
+        responding = armyList;  
+        const sending = JSON.stringify(responding);
         console.log("responding with data ");
-        console.log('all Lists now: ', allLists);
+        console.log('army list now: ', responding);
         response.writeHead(200, {'Content-Type': 'text/plain'});
         response.end(sending);      
       }, 1000); //timer
@@ -87,41 +61,35 @@ app.post('/showAll', (request, response) => {
 
 });
 
-app.post('/checkPW', (request, response) =>{
-  console.log("login attempt");
-  if (request.body.MSG == pasw) {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.end('ok');
+app.post('/updateAll', (request, response) => {
+  console.log('update army list request received');
+  
+  
+  const received = JSON.parse(request.body.MSG); 
+  const inTurnNow = received.updatedLists.length -1;
+  console.log('received: ', received);
+  console.log('received.psw , .name: ', received.updatedLists[0].psw, received.updatedLists[0].name);
+  const armyQuery = { name:  'armies' }; 
+  console.log('received.updatedLists.length: ', received.updatedLists.length);
+  console.log('aQ: ', armyQuery);
+  
+  if (received.updatedLists[inTurnNow].psw == pasw) {
+    
+    // delete password from entry:
+    delete received.updatedLists[inTurnNow].psw;
+     
+    setTimeout(() => { 
+      armyListModel.update(armyQuery, {
+        armyList: received.updatedLists[inTurnNow]
+      }, (err, numberAffected, rawResponse) => {
+        console.log("armyList updated");
+      }); 
+    }, 1000); //timer 
+    
+  } else {
+    console.log('update failed due wrong password');
   }
 });
-
-app.post('/updateAll', (request, response) => {
-  console.log('update all db lists request received');
-  
-  const received = JSON.parse(request.body.MSG); //saha, muokkaus, deleted
-  const sahaQuery = { name:  'saha' }; 
-  const muokkausQuery = { name:  'muokkaus' }; 
-  const deletedQuery = { name:  'deleted' };
-  
-  setTimeout(() => { 
-    sahaListModel.update(sahaQuery, {
-      sahaList: received.saha
-    }, (err, numberAffected, rawResponse) => {
-      console.log("sahaList updated");
-    }); 
-    muokkausModel.update(muokkausQuery, {
-      muokkausList: received.muokkaus
-    }, (err, numberAffected, rawResponse) => {
-      console.log("muokkausList updated");
-    }); 
-    deletedModel.update(deletedQuery, {
-      deletedList: received.deleted
-    }, (err, numberAffected, rawResponse) => {
-      console.log("deletedList updated");
-    });
-  }, 600); //timer  
-});
-*/
 
 const listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
