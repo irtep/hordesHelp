@@ -1,6 +1,7 @@
 function updateListsFromDB(){
   
   //const armyList = JSON.stringify(armyList);
+  const feedback = document.getElementById('feedback');
   const http = new XMLHttpRequest();
   const url = '/showAll';
   const params = 'MSG=show';
@@ -17,16 +18,26 @@ function updateListsFromDB(){
       //const forShow1 = sahaList.join('<br>');
       console.log("update ready!: ", armyList);
       armiesInDb = armyList[0].armyList;
+      feedback.innerHTML = "Received data from database successfully.";
+      
+      setTimeout(() => {
+        clearFeedback();
+      }, 1000);
     }
   }
   http.send(params); 
+  feedback.innerHTML = "getting info from database, wait!";
 }
 
 function updateListsInDB(updatedLists){
-  const armyList = JSON.stringify({updatedLists}); console.log('sending: ', armyList);
+  armiesInDb.push(updatedLists);
+  const feedback = document.getElementById('feedback');
+  const armyList = JSON.stringify({armiesInDb}); console.log('sending: ', armyList);
   const http = new XMLHttpRequest();
   const url = '/updateAll';
   const params = 'MSG=' + armyList;
+
+  console.log('armies in db', armiesInDb);
   
   http.open('POST', url, true);
   http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -36,7 +47,14 @@ function updateListsInDB(updatedLists){
     if(http.readyState == 4 && http.status == 200) {
       
       console.log(http.responseText);
+      feedback.innerHTML = http.responseText;
+      
+      setTimeout(() => {
+        clearFeedback();
+      }, 1000);
+      
     }
   }
   http.send(params);
+  feedback.innerHTML = "updating database, wait!";
 }

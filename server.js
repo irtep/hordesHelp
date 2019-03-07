@@ -64,29 +64,50 @@ app.post('/showAll', (request, response) => {
 app.post('/updateAll', (request, response) => {
   console.log('update army list request received');
   
-  
+  //let oldList;
   const received = JSON.parse(request.body.MSG); 
-  const inTurnNow = received.updatedLists.length -1;
-  console.log('received: ', received);
-  console.log('received.psw , .name: ', received.updatedLists[0].psw, received.updatedLists[0].name);
-  const armyQuery = { name:  'armies' }; 
-  console.log('received.updatedLists.length: ', received.updatedLists.length);
-  console.log('aQ: ', armyQuery);
+  const inTurnNow = received.armiesInDb.length -1; /*
+  console.log('inTurnNow', inTurnNow);
+  console.log('received 0, 1: ', received.armiesInDb, received.armiesInDb[0], received.armiesInDb[1]);
+  console.log('received.psw , .name: ', received.armiesInDb[inTurnNow].updatedLists.psw, received.armiesInDb[inTurnNow].updatedLists.name); */
+  const armyQuery = { name:  'armies' };  /*
+  console.log('received.armiesInDb[inTurnNow].updatedLists.length: ', received.armiesInDb[inTurnNow].updatedLists.length);
+  console.log('aQ: ', armyQuery); */
   
-  if (received.updatedLists[inTurnNow].psw == pasw) {
+  if (received.armiesInDb[inTurnNow].updatedLists.psw == pasw) {
     
     // delete password from entry:
-    delete received.updatedLists[inTurnNow].psw;
-     
+    delete received.armiesInDb[inTurnNow].updatedLists.psw;
+    /*
+    // get old list of armies from db:
+    armyListModel.find((err, results) => {
+    if (err) console.log(err);
+      oldList = results;   
+      console.log('result for search: ', results);
+    });
+    */
     setTimeout(() => { 
+      //oldList.push(received);
+      
       armyListModel.update(armyQuery, {
-        armyList: received.updatedLists[inTurnNow]
+        armyList: received
       }, (err, numberAffected, rawResponse) => {
-        console.log("armyList updated");
+        console.log("armyList updated"); 
       }); 
+
+      const sending = JSON.stringify('Database update successfully!');
+      console.log("responding with data ");
+      response.writeHead(200, {'Content-Type': 'text/plain'});
+      response.end(sending); 
+      
+      //console.log('result for search: ', oldList);
     }, 1000); //timer 
     
   } else {
+      const sending = JSON.stringify('Database update failed, due wrong password!');
+      console.log("responding with data ");
+      response.writeHead(200, {'Content-Type': 'text/plain'});
+      response.end(sending);
     console.log('update failed due wrong password');
   }
 });
