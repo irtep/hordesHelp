@@ -15,7 +15,9 @@ function saveLoad(whatButton){
   const nameSpace = document.getElementById('nameOfArmy');
   const passField = document.getElementById('passwordField');
   const feedback = document.getElementById('feedback');
-  console.log('what button ', whatButton);
+  const fetchedFromDB = document.getElementById('fetchedFromDB');
+
+  fetchedFromDB.innerHTML = '';
 
   switch (whatButton) {
     
@@ -23,10 +25,8 @@ function saveLoad(whatButton){
       if (passField.value.length > 2) {
         
         if (nameSpace.value.length > 1 && chosenArmy.length > 1) {  
-          const armyListToBeUpdated = {name: nameSpace.value, list: chosenArmy, psw: passField.value};
-          console.log('armiesInBb', armiesInDb);
-          armiesInDb.push(armyListToBeUpdated);
-          updateListsInDB(armiesInDb); 
+          const armyListToBeUpdated = {updatedLists: {name: nameSpace.value, list: chosenArmy, psw: passField.value}};
+          updateListsInDB(armyListToBeUpdated); 
           
         } else { feedback.innerHTML = 'ERROR: army need to have a name, that has atleast 2 characters. And atleast two selected units.';
           console.log('r', nameSpace.value.length, chosenArmy.length);       
@@ -40,6 +40,52 @@ function saveLoad(whatButton){
     break;
     
     case 'load army':
+      
+      // update from db just in case:
+      updateListsFromDB();
+      
+      function makeButton(army){
+      console.log('map: ', army);
+      }
+      
+      // delayed info to give time to DB fetch:
+      
+      setTimeout(() => {
+        //const dbList = armiesI
+        fetchedFromDB.innerHTML = armiesInDb[0].armiesInDb.map(makeButton);
+      }, 2000);
+      
+      /*
+        armiesInDb:
+        
+        in db:  
+        [{…}]
+        0:
+        armiesInDb: Array(2)
+        0: {updatedLists: {…}}
+        1: {updatedLists: {…}}
+        length: 2
+        __proto__: Array(0)
+        __proto__: Object
+        length: 1
+        __proto__: Array(0)
+      */
+    break;
+    
+    case 'delete saved army':
+      /*
+        in db:  
+        [{…}]
+        0:
+        armiesInDb: Array(2)
+        0: {updatedLists: {…}}
+        1: {updatedLists: {…}}
+        length: 2
+        __proto__: Array(0)
+        __proto__: Object
+        length: 1
+        __proto__: Array(0)
+      */
     break;
       
     default: console.log('not found button at saveLoad function');  
@@ -193,8 +239,11 @@ window.onload = ()=> {
   updateCards();
   
   // get list of saved armies:
+  
   updateListsFromDB();
+  setTimeout( () => {
+   console.log('in db: ', armiesInDb);
+  }, 10000);
   // update them to their place.
-  console.log('aIDb: ', armiesInDb);
   
 };
