@@ -43,9 +43,16 @@
 .warjack {
   background-color: lightYellow;
 }
+.armies {
+  background-color: darkGreen;
+  color: white;
+}
+.forDelete {
+  background-color: pink;
+  color: black;
+}
 
-
-
+/*old stuff. maybe not needed, but so far i keep as reference:*/
 #remover {
   background-color: pink;
   width: 450px;

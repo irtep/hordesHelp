@@ -32,10 +32,10 @@ function updateListsFromDB(){
 function updateListsInDB(updatedLists){
   armiesInDb.push(updatedLists);
   const feedback = document.getElementById('feedback');
-  const armyList = JSON.stringify({armiesInDb}); console.log('sending: ', armyList);
+  const theList = JSON.stringify({armiesInDb}); console.log('sending: ', theList);
   const http = new XMLHttpRequest();
   const url = '/updateAll';
-  const params = 'MSG=' + armyList;
+  const params = 'MSG=' + theList;
 
   console.log('armies in db', armiesInDb);
   
