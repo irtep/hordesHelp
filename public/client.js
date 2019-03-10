@@ -11,21 +11,100 @@ function clearFeedback(){
   }, 1000); //timer
 }
 
+// function when user has selected army he wants to load or delete
+function chooseArmy(nameOfArmy, action){
+  const nameSpace = document.getElementById('nameOfArmy');
+  const passField = document.getElementById('passwordField');
+  const factionSelect = document.getElementById('factionSelector');
+  /*
+  factionSelect[factionSelect.selectedIndex].value === cards[i].factions[i2]
+  */
+  console.log('chosen: ', nameOfArmy, action);
+  
+  if (action === 'take') {
+    
+    console.log('take: ', chosenArmy, factionSelect.value);
+    // set chosenArmy and faction
+    for (let i = 0; i < armiesInDb.length; i++) {
+      
+      if (nameOfArmy == armiesInDb[i][0]) {
+        
+        chosenArmy = armiesInDb[i][1];    
+        
+        // check warcaster and its faction for selected faction:
+        for (let i2 = 0; i2 < chosenArmy.length; i2++){
+          
+          if  (chosenArmy[i2].type === 'warlock' || chosenArmy[i2].type === 'warcaster') {
+            // set faction
+            factionSelect.value = chosenArmy[i2].factions[0];
+            console.log('setting faction: ', chosenArmy[i2].factions[0]);
+          }
+        }
+      }
+    }
+    console.log('take: ', chosenArmy, factionSelect.value);  
+    updateCards();
+    resetPoints();
+    updateArmyList();
+    updatePoints()
+    
+    nameSpace.innerHTML = nameOfArmy;
+    passField = '';
+    
+  } // take ends.
+  
+  if (action === 'delete') {
+    
+    // find array and delete it.
+    for (let i3 = 0; i3 < armiesInDb.length; i3++){
+          
+      if  (nameOfArmy === armiesInDb[i3][0]) {
+        
+        armiesInDb.splice(i3, 1);
+      }
+    }    
+    
+    // databaseCommand to update armiesInDb
+      if (passField.value.length > 2) {
+        // need to make entry to pass password.
+        const armyListToBeUpdated = ['forDelete', 'forDelete', passField.value];
+       
+        updateListsInDB(armyListToBeUpdated);  
+        
+        setTimeout( () => {
+          updateListsFromDB();
+          document.getElementById('fetchedFromDB').innerHTML = '';
+        }, 1000);
+      } else {
+        
+        feedback.innerHTML = 'ERROR: password incorrect!';
+        clearFeedback();
+      }
+    
+  }
+}
+
+// function for save, load and delete buttons:
 function saveLoad(whatButton){
   const nameSpace = document.getElementById('nameOfArmy');
   const passField = document.getElementById('passwordField');
   const feedback = document.getElementById('feedback');
   const fetchedFromDB = document.getElementById('fetchedFromDB');
+  
+  /*
+  
+  */
 
   fetchedFromDB.innerHTML = '';
 
   switch (whatButton) {
     
+    // save army to database:
     case 'save army':
       if (passField.value.length > 2) {
         
         if (nameSpace.value.length > 1 && chosenArmy.length > 1) {  
-          const armyListToBeUpdated = {updatedLists: {name: nameSpace.value, list: chosenArmy, psw: passField.value}};
+          const armyListToBeUpdated = [nameSpace.value, chosenArmy, passField.value];
           updateListsInDB(armyListToBeUpdated); 
           
         } else { feedback.innerHTML = 'ERROR: army need to have a name, that has atleast 2 characters. And atleast two selected units.';
@@ -39,53 +118,28 @@ function saveLoad(whatButton){
       }
     break;
     
+    // load army from database
     case 'load army':
       
-      // update from db just in case:
-      updateListsFromDB();
-      
-      function makeButton(army){
-      console.log('map: ', army);
-      }
-      
-      // delayed info to give time to DB fetch:
-      
-      setTimeout(() => {
-        //const dbList = armiesI
-        fetchedFromDB.innerHTML = armiesInDb[0].armiesInDb.map(makeButton);
-      }, 2000);
-      
-      /*
-        armiesInDb:
+      const mapped = armiesInDb.map((army) => {
         
-        in db:  
-        [{…}]
-        0:
-        armiesInDb: Array(2)
-        0: {updatedLists: {…}}
-        1: {updatedLists: {…}}
-        length: 2
-        __proto__: Array(0)
-        __proto__: Object
-        length: 1
-        __proto__: Array(0)
-      */
+        fetchedFromDB.innerHTML = fetchedFromDB.innerHTML + '<input type= "button" value= "'+army[0]+'" class= "armies"  id= "take" onclick= "chooseArmy(this.value, this.id)">';
+      });
+      
+      feedback.innerHTML = 'select army to load: ';
+      clearFeedback();
+      
     break;
     
+    // delete army from database
     case 'delete saved army':
-      /*
-        in db:  
-        [{…}]
-        0:
-        armiesInDb: Array(2)
-        0: {updatedLists: {…}}
-        1: {updatedLists: {…}}
-        length: 2
-        __proto__: Array(0)
-        __proto__: Object
-        length: 1
-        __proto__: Array(0)
-      */
+      
+      const mappedForDelete = armiesInDb.map((army) => {
+        
+        fetchedFromDB.innerHTML = fetchedFromDB.innerHTML + '<input type= "button" value= "'+army[0]+'" class= "forDelete" id= "delete" onclick= "chooseArmy(this.value, this.id)">';
+      });
+      
+      feedback.innerHTML = 'select army to DELETE (deleted are deleted permanently. Password required.): ';
     break;
       
     default: console.log('not found button at saveLoad function');  
@@ -192,7 +246,9 @@ function updatePoints(){
   
   // deal with warjack/beast points:
   exceedingPoints = jackAndBeastPoints - bgPointsLeft;
+  
   if (exceedingPoints < 0) { exceedingPoints = 0; }
+  
   unitPoints = unitPoints + exceedingPoints;
   //update:
   pointsLeft = pointsLeft - unitPoints;

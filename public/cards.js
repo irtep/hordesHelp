@@ -1,3 +1,4 @@
+// Please note: if you make mercenary warcaster with partisan team, you need to make separate cards for both.
 const cards = [
   // Cygnar
     // warcasters:
@@ -60,7 +61,7 @@ const cards = [
   // Khador
     // warcasters:
   {name: 'Adri_invierno', type: 'warcaster', bgPoints: 29, pointCost: 0, factions: ['khador']},
-  {name: 'Sergei', type: 'warcaster', bgPoints: 28, pointCost: 0, factions: ['khador']},
+  {name: 'Butcher', type: 'warcaster', bgPoints: 28, pointCost: 0, factions: ['khador']},
     // warjacks:
   {name: 'Juggernaut', type: 'warjack', bgPoints: 0, pointCost: 13, factions: ['khador']},
   {name: 'Destroyer', type: 'warjack', bgPoints: 0, pointCost: 14, factions: ['khador']},

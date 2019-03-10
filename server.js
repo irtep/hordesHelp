@@ -64,44 +64,44 @@ app.post('/showAll', (request, response) => {
 app.post('/updateAll', (request, response) => {
   console.log('update army list request received');
   
-  //let oldList;
   const received = JSON.parse(request.body.MSG); 
-  const inTurnNow = received.armiesInDb.length -1; /*
-  console.log('inTurnNow', inTurnNow);
-  console.log('received 0, 1: ', received.armiesInDb, received.armiesInDb[0], received.armiesInDb[1]);
-  console.log('received.psw , .name: ', received.armiesInDb[inTurnNow].updatedLists.psw, received.armiesInDb[inTurnNow].updatedLists.name); */
-  const armyQuery = { name:  'armies' };  /*
-  console.log('received.armiesInDb[inTurnNow].updatedLists.length: ', received.armiesInDb[inTurnNow].updatedLists.length);
-  console.log('aQ: ', armyQuery); */
+  console.log('received: ', received);
+  const inTurnNow = received.armiesInDb.length -1;
+  const armyQuery = { name:  'armies' };  
   
-  if (received.armiesInDb[inTurnNow].updatedLists.psw == pasw) {
+  if (received.armiesInDb[inTurnNow][2] == pasw) {
+    const listEntry = [];
     
+    // if this was deletation of army:
+    if (received.armiesInDb[inTurnNow][0] == 'forDelete') {
+    
+      console.log('deletation detected, splicing: ', received.armiesInDb[inTurnNow]);
+    // delete entry as it was just to bring password:
+      received.armiesInDb.splice(inTurnNow, 1);    
+    } else {
+      
+      console.log('add on received, adding: ', received.armiesInDb[inTurnNow]);
+    // if it was update of new army    
     // delete password from entry:
-    delete received.armiesInDb[inTurnNow].updatedLists.psw;
-    /*
-    // get old list of armies from db:
-    armyListModel.find((err, results) => {
-    if (err) console.log(err);
-      oldList = results;   
-      console.log('result for search: ', results);
-    });
-    */
-    setTimeout(() => { 
-      //oldList.push(received);
+      received.armiesInDb[inTurnNow].splice(2, 1);
+    }
+    // make a new armylist
+    for (let i = 0; i < received.armiesInDb.length; i++) {
+      const newEntry = [received.armiesInDb[i][0], received.armiesInDb[i][1]];
+      
+      listEntry.push(newEntry);
+    }
       
       armyListModel.update(armyQuery, {
-        armyList: received
+        armyList: listEntry
       }, (err, numberAffected, rawResponse) => {
         console.log("armyList updated"); 
       }); 
 
-      const sending = JSON.stringify('Database update successfully!');
+      const sending = JSON.stringify('Database updated successfully!');
       console.log("responding with data ");
       response.writeHead(200, {'Content-Type': 'text/plain'});
       response.end(sending); 
-      
-      //console.log('result for search: ', oldList);
-    }, 1000); //timer 
     
   } else {
       const sending = JSON.stringify('Database update failed, due wrong password!');
