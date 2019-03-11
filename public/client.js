@@ -1,3 +1,5 @@
+/*  ARMY PLANNER */
+
 let pointsLeft;
 let bgPointsLeft;
 var armiesInDb;
