@@ -47,9 +47,23 @@
         <br><span id= "cardsHere"></span>
       </div>
     </div>
+     
+    <!-- BELOW -->
+    <h2>
+      Damage checker:
+    </h2>
+    <p>
+      How many hits: <input id= "hitCalcu" type= "number" onchange= "hitNumberChange()" max= "10">
+      Your Mat/Rat: <input id= "matRat" type= "number"> targets def: <input id= "def" type= "number"> and armour: <input id= "arm" type= "number">
+      <br>
+      <div id = "hits"></div><br>
+      <input type= "button" value= "calculate damage" onclick= "calculateDamage()">
+      <div id = "results"></div><br>
+    </p>
   
     </body>
     <script src="/cards.js"></script>
     <script src="/dataBaseCommands.js"></script>
     <script src="/client.js"></script>
+    <script src="/damageChecker.js"></script>
 </html>
