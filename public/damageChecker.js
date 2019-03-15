@@ -21,9 +21,10 @@ const damageDiceResults = document.getElementById('damageDiceResults');
 const dMatRat = document.getElementById('matRat'); 
 const dDef = document.getElementById('def'); 
 const dArm = document.getElementById('arm');
-const damages = [];
+let damages = [];
+/*  i dont think this is really needed...
 let averages = {ave: null, max: null, min: null}
-
+*/
 
 function hitNumberChange(){
   
@@ -142,6 +143,7 @@ function calcTotal(dams){
   return totalDam;
 }
 
+// this fires from calculate damage button
 function calculateDamage() {
   const attacks = hitCalcu.value;
   const matRat = dMatRat.value;
@@ -155,6 +157,7 @@ function calculateDamage() {
   results.innerHTML = '';
   hitDiceResults.innerHTML = ''; 
   damageDiceResults.innerHTML = ''; 
+  damages = [];
   
   for (let i = 0; i < attacks; i++) {
     const currentAttackId = 'power' + i;
@@ -175,8 +178,10 @@ function calculateDamage() {
   total = calcTotal(attackDamages);
   damages.push(attackDamages);
   
-  results.innerHTML = '<br><br>damages with this setup: '+ damages + '. = total: '+total+'<br><br> Average damage: '+ averages.ave+ '.<br> biggest damage done: '+ 
+  results.innerHTML = '<br><br>damages with this setup: '+ damages + '. = total: '+total;
+  /* disabled as i don't think that this is really needed...+'<br><br> Average damage: '+ averages.ave+ '.<br> biggest damage done: '+ 
   averages.max+ '. <br> weakest damage done: '+ averages.min+ '.';
+  */
 }
 /*
 
