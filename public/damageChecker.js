@@ -1,17 +1,5 @@
 /*   DAMAGE CHECKER  */
-/*    
-    <p>
-      How many hits: <input id= "hitCalcu" type= "number" onchange= "hitNumberChange()"><br>
-      <span id = "hits"></span><br>
-      <span id = "results"></span><br>
-    </p>
- */   
 
-/*
-How many hits: <input id= "hitCalcu" type= "number" onchange= "hitNumberChange()" max= "10">
-Your Mat/Rat: <input id= "matRat" type= "number"> targets def: <input id= "def" type= "number"> and armour: <input id= "arm" type= "number">
-
-*/
 
 const hitCalcu = document.getElementById('hitCalcu');
 const hits = document.getElementById('hits');
