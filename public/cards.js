@@ -4,10 +4,12 @@ const cards = [
     // warcasters:
   {name: 'Stryker1', type: 'warcaster', bgPoints: 30, pointCost: 0, factions: ['cygnar']},
   {name: 'Caine2', type: 'warcaster', bgPoints: 27, pointCost: 0, factions: ['cygnar']},
+  {name: 'Maddox1', type: 'warcaster', bgPoints: 30, pointCost: 0, factions: ['cygnar']},
     // warjacks:
   {name: 'Defender', type: 'warjack', bgPoints: 0, pointCost: 16, factions: ['cygnar']},
   {name: 'Avenger', type: 'warjack', bgPoints: 0, pointCost: 17, factions: ['cygnar']},
   {name: 'Charger', type: 'warjack', bgPoints: 0, pointCost: 9, factions: ['cygnar']},
+  {name: 'Firefly', type: 'warjack', bgPoints: 0, pointCost: 8, factions: ['cygnar']},
   {name: 'Lancer', type: 'warjack', bgPoints: 0, pointCost: 10, factions: ['cygnar']},
   {name: 'Cyclone', type: 'warjack', bgPoints: 0, pointCost: 13, factions: ['cygnar']},
   {name: 'Hammersmith', type: 'warjack', bgPoints: 0, pointCost: 12, factions: ['cygnar']},
@@ -15,6 +17,8 @@ const cards = [
     // units:,
   {name: 'Rangers', type: 'unit', bgPoints: 0, pointCost: 9, factions: ['cygnar']},
   {name: '6x_Long_gunners', type: 'unit', bgPoints: 0, pointCost: 10, factions: ['cygnar']},
+  {name: '6x_Stormguard', type: 'unit', bgPoints: 0, pointCost: 9, factions: ['cygnar']},
+  {name: '10x_Stormguard', type: 'unit', bgPoints: 0, pointCost: 15, factions: ['cygnar']},
     // solos:,
   {name: 'Jr_warcaster', type: 'solo', bgPoints: 0, pointCost: 4, factions: ['cygnar']},
   {name: 'Black_13', type: 'solo', bgPoints: 0, pointCost: 10, factions: ['cygnar']},
@@ -90,8 +94,10 @@ const cards = [
   {name: 'Deneghra1', type: 'warcaster', bgPoints: 26, pointCost: 0, factions: ['cryx']},
   {name: 'Goreshade2', type: 'warcaster', bgPoints: 28, pointCost: 0, factions: ['cryx']},
   {name: 'Witch_Coven', type: 'warcaster', bgPoints: 26, pointCost: 0, factions: ['cryx']},
+  {name: 'Agathia1', type: 'warcaster', bgPoints: 29, pointCost: 0, factions: ['cryx']},
     // warjacks:
   {name: 'Slayer', type: 'warjack', bgPoints: 0, pointCost: 10, factions: ['cryx']},
+  {name: 'Reaper', type: 'warjack', bgPoints: 0, pointCost: 13, factions: ['cryx']},
   {name: 'Deathripper', type: 'warjack', bgPoints: 0, pointCost: 6, factions: ['cryx']},
   {name: 'Defiler', type: 'warjack', bgPoints: 0, pointCost: 8, factions: ['cryx']},
   {name: 'Desecrator', type: 'warjack', bgPoints: 0, pointCost: 14, factions: ['cryx']},
@@ -101,11 +107,13 @@ const cards = [
   {name: '6x_satyrix_bwitches', type: 'unit', bgPoints: 0, pointCost: 8, factions: ['cryx']},
   {name: '10x_satyrix_bwitches', type: 'unit', bgPoints: 0, pointCost: 13, factions: ['cryx']},
   {name: '10x_satyrix_bw+commander', type: 'unit', bgPoints: 0, pointCost: 17, factions: ['cryx']},
+  {name: '6x_bane_warriors', type: 'unit', bgPoints: 0, pointCost: 10, factions: ['cryx']},
+  {name: '10x_bane_warriors', type: 'unit', bgPoints: 0, pointCost: 17, factions: ['cryx']},
     // solos:
-  {name: 'Skarlock_thrall', type: 'unit', bgPoints: 0, pointCost: 4, factions: ['cryx']},
-  {name: 'Tartarus', type: 'unit', bgPoints: 0, pointCost: 6, factions: ['cryx']},
-  {name: 'Pistol_wraith', type: 'unit', bgPoints: 0, pointCost: 5, factions: ['cryx']},
-  {name: 'Necrotech', type: 'unit', bgPoints: 0, pointCost: 2, factions: ['cryx']},
+  {name: 'Skarlock_thrall', type: 'solo', bgPoints: 0, pointCost: 4, factions: ['cryx']},
+  {name: 'Tartarus', type: 'solo', bgPoints: 0, pointCost: 6, factions: ['cryx']},
+  {name: 'Pistol_wraith', type: 'solo', bgPoints: 0, pointCost: 5, factions: ['cryx']},
+  {name: 'Necrotech', type: 'solo', bgPoints: 0, pointCost: 2, factions: ['cryx']},
   /* or Crucible Guard, Cryx, Cygnar, Khador, or Protectorate. */
   // Mercenaries and Minion
   

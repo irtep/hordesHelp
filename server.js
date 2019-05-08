@@ -21,7 +21,7 @@ const armyListSchema = new Schema( {
   } 
 });
 
-const armyListModel = mongoose.model('armyListModel', armyListSchema ); // for sahalist
+const armyListModel = mongoose.model('armyListModel', armyListSchema ); 
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
