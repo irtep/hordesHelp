@@ -44,7 +44,7 @@ app.post('/showAll', (request, response) => {
       armyListModel.find((err, results) => {
       if (err) console.log(err);
       armyList = results;   
-        console.log('result for sahalist search: ', results);
+        console.log('result for armylist search: ', results);
       });
       setTimeout(() => {  // timed so that there is time to add the data
         responding = armyList;  

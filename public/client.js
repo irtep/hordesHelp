@@ -51,7 +51,7 @@ function chooseArmy(nameOfArmy, action){
     updatePoints()
     
     nameSpace.innerHTML = nameOfArmy;
-    passField = '';
+    passField.innderHTML = '';
     
   } // take ends.
   

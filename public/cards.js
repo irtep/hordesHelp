@@ -78,7 +78,7 @@ const cards = [
     // warcasters:
   {name: "Kaelyssa", type: 'warcaster', bgPoints: 29, pointCost: 0, factions: ['retribution']},
     // warjacks:
-  {name: 'Chimera', type: 'warjack', bgPoints: 0, pointCost: 9, factions: ['retribution']},
+  {name: 'Chimera', type: 'warjack', bgPoints: 0, pointCost: 8, factions: ['retribution']},
   {name: 'Manticore', type: 'warjack', bgPoints: 0, pointCost: 14, factions: ['retribution']},
   {name: 'Banshee', type: 'warjack', bgPoints: 0, pointCost: 18, factions: ['retribution']},
     // units:
@@ -118,7 +118,7 @@ const cards = [
   // Mercenaries and Minion
   
   {name: '6x_steelh_rifleman', type: 'unit', bgPoints: 0, pointCost: 8, factions: ['crucible', 'cryx', 'cygnar', 'khador', 'protectorate']},
-  {name: '10x_steelh_rifleman', type: 'unit', bgPoints: 0, pointCost: 14, factions: ['crucible', 'cryx', 'cygnar', 'khador', 'protectorate']},
+  {name: '10x_steelh_rifleman', type: 'unit', bgPoints: 0, pointCost: 13, factions: ['crucible', 'cryx', 'cygnar', 'khador', 'protectorate']},
   {name: 'Alten_Ashley', type: 'solo', bgPoints: 0, pointCost: 6, factions: ['crucible', 'circle', 'cygnar', 'khador', 'protectorate', 'trollbloods']},
   {name: '6x_Cylena_and_hunters', type: 'unit', bgPoints: 0, pointCost: 12, factions: ['circle', 'cryx', 'cygnar', 'khador', 'retribution', 'trollbloods']},
   {name: '10x_Cylena_and_hunters', type: 'unit', bgPoints: 0, pointCost: 19, factions: ['circle', 'cryx', 'cygnar', 'khador', 'retribution', 'trollbloods']},
