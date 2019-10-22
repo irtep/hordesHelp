@@ -13,6 +13,7 @@ const cards = [
   {name: 'Lancer', type: 'warjack', bgPoints: 0, pointCost: 10, factions: ['cygnar']},
   {name: 'Cyclone', type: 'warjack', bgPoints: 0, pointCost: 13, factions: ['cygnar']},
   {name: 'Hammersmith', type: 'warjack', bgPoints: 0, pointCost: 12, factions: ['cygnar']},
+  {name: 'Centurion', type: 'warjack', bgPoints: 0, pointCost: 17, factions: ['cygnar']},
   {name: 'Ironclad', type: 'warjack', bgPoints: 0, pointCost: 12, factions: ['cygnar']},
     // units:,
   {name: 'Rangers', type: 'unit', bgPoints: 0, pointCost: 9, factions: ['cygnar']},
@@ -54,10 +55,11 @@ const cards = [
   {name: 'Wild_Argus', type: 'warbeast', bgPoints: 0, pointCost: 7, factions: ['circle']},
   {name: 'Winter_Argus', type: 'warbeast', bgPoints: 0, pointCost: 8, factions: ['circle']},
     // units:
-  {name: 'Druids', type: 'unit', bgPoints: 0, pointCost: 12, factions: ['circle']},
+  {name: 'Druids', type: 'unit', bgPoints: 0, pointCost: 10, factions: ['circle']},
   {name: '3x_Skinwalkers', type: 'unit', bgPoints: 0, pointCost: 9, factions: ['circle']},
   {name: '5x_Skinwalkers', type: 'unit', bgPoints: 0, pointCost: 15, factions: ['circle']},
   {name: '5x_Skinwalkers+commander', type: 'unit', bgPoints: 0, pointCost: 19, factions: ['circle']},
+  {name: 'Shifting Stones', type: 'unit', bgPoints: 0, pointCost: 3, factions: ['circle']},
     // solos:  
   {name: 'Lord_of_the_Feast', type: 'solo', bgPoints: 0, pointCost: 6, factions: ['circle']},
   {name: 'Druid_wilder', type: 'solo', bgPoints: 0, pointCost: 4, factions: ['circle']},
