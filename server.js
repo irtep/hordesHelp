@@ -35,30 +35,35 @@ app.get('/', function(request, response) {
 app.post('/showAll', (request, response) => {
   
   const received = request.body.MSG;
-  let armyList;
-  let responding;
+  let armyList = null;
+  let responding = null;
   
   console.log('Post with showAll received: ', received);
   switch (received){
+      
     case ('show'):
-      armyListModel.find((err, results) => {
-      if (err) console.log(err);
-      armyList = results;   
-        console.log('result for armylist search: ', results);
+      const newDbConnect = new Promise( (resolve, reject) => {
+      
+        armyListModel.find((err, results) => {
+          
+          if (results !== null) {
+            
+            resolve(results);
+          } 
+        });  
       });
-      setTimeout(() => {  // timed so that there is time to add the data
-        responding = armyList;  
+      
+      newDbConnect.then( (results) => {
+        
+        responding = results;
         const sending = JSON.stringify(responding);
         console.log("responding with data ");
         console.log('army list now: ', responding);
         response.writeHead(200, {'Content-Type': 'text/plain'});
-        response.end(sending);      
-      }, 1000); //timer
+        response.end(sending); 
+      });
     break;  
   }
-  
-  //console.log(request.headers);
-
 });
 
 app.post('/updateAll', (request, response) => {
