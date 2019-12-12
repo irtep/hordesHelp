@@ -63,6 +63,7 @@ const cards = [
     // solos:  
   {name: 'Lord_of_the_Feast', type: 'solo', bgPoints: 0, pointCost: 6, factions: ['circle']},
   {name: 'Druid_wilder', type: 'solo', bgPoints: 0, pointCost: 4, factions: ['circle']},
+  {name: 'Gallows Grove', type: 'solo', bgPoints: 0, pointCost: 2, factions: ['circle']},
   
   // Khador
     // warcasters:
