@@ -47,6 +47,7 @@ const cards = [
     // warlocks
   {name: 'Adri', type: 'warlock', bgPoints: 32, pointCost: 0, factions: ['circle']},
   {name: 'Mohsar', type: 'warlock', bgPoints: 27, pointCost: 0, factions: ['circle']},
+  {name: 'Baldur', type: 'warlock', bgPoints: 31, pointCost: 0, factions: ['circle']},
     // warbeasts:
   {name: 'Feral_Warpwolf', type: 'warbeast', bgPoints: 0, pointCost: 16, factions: ['circle']},
   {name: 'Pureblood_Warpwolf', type: 'warbeast', bgPoints: 0, pointCost: 17, factions: ['circle']},
