@@ -56,6 +56,10 @@ const cards = [
   {name: 'Wild_Argus', type: 'warbeast', bgPoints: 0, pointCost: 7, factions: ['circle']},
   {name: 'Winter_Argus', type: 'warbeast', bgPoints: 0, pointCost: 8, factions: ['circle']},
   {name: 'Woldwrath', type: 'warbeast', bgPoints: 0, pointCost: 37, factions: ['circle']},
+  {name: 'Megalith', type: 'warbeast', bgPoints: 0, pointCost: 20, factions: ['circle']},
+  {name: 'WoldWatcher', type: 'warbeast', bgPoints: 0, pointCost: 8, factions: ['circle']},
+  {name: 'Woldwyrd', type: 'warbeast', bgPoints: 0, pointCost: 9, factions: ['circle']},
+  {name: 'Woldwarden', type: 'warbeast', bgPoints: 0, pointCost: 14, factions: ['circle']},
     // units:
   {name: 'Druids', type: 'unit', bgPoints: 0, pointCost: 10, factions: ['circle']},
   {name: '3x_Skinwalkers', type: 'unit', bgPoints: 0, pointCost: 9, factions: ['circle']},
@@ -116,6 +120,8 @@ const cards = [
   {name: '10x_bane_warriors', type: 'unit', bgPoints: 0, pointCost: 17, factions: ['cryx']},
   {name: '6x_bane_warriors+officer', type: 'unit', bgPoints: 0, pointCost: 15, factions: ['cryx']},
   {name: '10x_bane_warriors+officer', type: 'unit', bgPoints: 0, pointCost: 22, factions: ['cryx']},
+  {name: '5x_bane_riders', type: 'unit', bgPoints: 0, pointCost: 20, factions: ['cryx']},
+  {name: '3x_bane_riders', type: 'unit', bgPoints: 0, pointCost: 12, factions: ['cryx']},
     // solos:
   {name: 'Skarlock_thrall', type: 'solo', bgPoints: 0, pointCost: 4, factions: ['cryx']},
   {name: 'Tartarus', type: 'solo', bgPoints: 0, pointCost: 6, factions: ['cryx']},
