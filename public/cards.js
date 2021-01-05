@@ -29,11 +29,11 @@ const cards = [
   {name: 'Ironbra', type: 'warlock', bgPoints: 27, pointCost: 0, factions: ['trollbloods']},
   {name: 'Madrak1', type: 'warlock', bgPoints: 29, pointCost: 0, factions: ['trollbloods']},
     // warbeasts:
-  {name: 'Dire_Troll_Bomber', type: 'warbeast', bgPoints: 0, pointCost: 19, factions: ['trollbloods']},
+  {name: 'Dire_Troll_Bomber', type: 'warbeast', bgPoints: 0, pointCost: 17, factions: ['trollbloods']},
   {name: 'Dire_Troll_Mauler', type: 'warbeast', bgPoints: 0, pointCost: 15, factions: ['trollbloods']},
   {name: 'Dire_Troll_Blitzer', type: 'warbeast', bgPoints: 0, pointCost: 16, factions: ['trollbloods']},
-  {name: 'Troll_axer', type: 'warbeast', bgPoints: 0, pointCost: 10, factions: ['trollbloods']},
-  {name: 'Troll_impaler', type: 'warbeast', bgPoints: 0, pointCost: 11, factions: ['trollbloods']},
+  {name: 'Troll_axer', type: 'warbeast', bgPoints: 0, pointCost: 9, factions: ['trollbloods']},
+  {name: 'Troll_impaler', type: 'warbeast', bgPoints: 0, pointCost: 9, factions: ['trollbloods']},
   
     // units:
   {name: '6x_Fennblades', type: 'unit', bgPoints: 0, pointCost: 9, factions: ['trollbloods']},
