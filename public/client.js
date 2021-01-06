@@ -297,11 +297,13 @@ window.onload = ()=> {
   updateCards();
   
   // get list of saved armies:
-  
+  /* disabled for now as i dont have access to mlab anymore
+  ill update this to atlas at some point*/
+  /*
   updateListsFromDB();
   setTimeout( () => {
    console.log('in db: ', armiesInDb);
   }, 10000);
   // update them to their place.
-  
+  */
 };

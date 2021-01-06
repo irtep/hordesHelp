@@ -104,6 +104,7 @@ const cards = [
   {name: 'Goreshade2', type: 'warcaster', bgPoints: 28, pointCost: 0, factions: ['cryx']},
   {name: 'Witch_Coven', type: 'warcaster', bgPoints: 26, pointCost: 0, factions: ['cryx']},
   {name: 'Agathia1', type: 'warcaster', bgPoints: 29, pointCost: 0, factions: ['cryx']},
+  {name: 'Asphyxious11', type: 'warcaster', bgPoints: 28, pointCost: 0, factions: ['cryx']},
     // warjacks:
   {name: 'Slayer', type: 'warjack', bgPoints: 0, pointCost: 10, factions: ['cryx']},
   {name: 'Reaper', type: 'warjack', bgPoints: 0, pointCost: 13, factions: ['cryx']},
