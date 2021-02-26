@@ -20,9 +20,10 @@ const cards = [
   {name: '6x_Long_gunners', type: 'unit', bgPoints: 0, pointCost: 10, factions: ['cygnar']},
   {name: '6x_Stormguard', type: 'unit', bgPoints: 0, pointCost: 9, factions: ['cygnar']},
   {name: '10x_Stormguard', type: 'unit', bgPoints: 0, pointCost: 15, factions: ['cygnar']},
+  {name: 'Black_13', type: 'solo', bgPoints: 0, pointCost: 10, factions: ['cygnar']},
     // solos:,
   {name: 'Jr_warcaster', type: 'solo', bgPoints: 0, pointCost: 4, factions: ['cygnar']},
-  {name: 'Black_13', type: 'solo', bgPoints: 0, pointCost: 10, factions: ['cygnar']},
+  {name: 'Arcane_tempest_rifleman', type: 'solo', bgPoints: 0, pointCost: 4, factions: ['cygnar']},
   
   // Trollbloods
     // warlocks
@@ -118,7 +119,7 @@ const cards = [
   {name: '10x_satyrix_bwitches', type: 'unit', bgPoints: 0, pointCost: 13, factions: ['cryx']},
   {name: '10x_satyrix_bw+commander', type: 'unit', bgPoints: 0, pointCost: 17, factions: ['cryx']},
   {name: '6x_bane_warriors', type: 'unit', bgPoints: 0, pointCost: 10, factions: ['cryx']},
-  {name: '10x_bane_warriors', type: 'unit', bgPoints: 0, pointCost: 17, factions: ['cryx']},
+  {name: '10x_bane_warriors', type: 'unit', bgPoints: 0, pointCost: 16, factions: ['cryx']},
   {name: '6x_bane_warriors+officer', type: 'unit', bgPoints: 0, pointCost: 15, factions: ['cryx']},
   {name: '10x_bane_warriors+officer', type: 'unit', bgPoints: 0, pointCost: 22, factions: ['cryx']},
   {name: '5x_bane_riders', type: 'unit', bgPoints: 0, pointCost: 20, factions: ['cryx']},
@@ -134,8 +135,8 @@ const cards = [
   {name: '6x_steelh_rifleman', type: 'unit', bgPoints: 0, pointCost: 8, factions: ['crucible', 'cryx', 'cygnar', 'khador', 'protectorate']},
   {name: '10x_steelh_rifleman', type: 'unit', bgPoints: 0, pointCost: 13, factions: ['crucible', 'cryx', 'cygnar', 'khador', 'protectorate']},
   {name: 'Alten_Ashley', type: 'solo', bgPoints: 0, pointCost: 6, factions: ['crucible', 'circle', 'cygnar', 'khador', 'protectorate', 'trollbloods']},
-  {name: '6x_Cylena_and_hunters', type: 'unit', bgPoints: 0, pointCost: 12, factions: ['circle', 'cryx', 'cygnar', 'khador', 'retribution', 'trollbloods']},
-  {name: '10x_Cylena_and_hunters', type: 'unit', bgPoints: 0, pointCost: 19, factions: ['circle', 'cryx', 'cygnar', 'khador', 'retribution', 'trollbloods']},
+  {name: '6x_Cylena_and_hunters', type: 'unit', bgPoints: 0, pointCost: 10, factions: ['circle', 'cryx', 'cygnar', 'khador', 'retribution', 'trollbloods']},
+  {name: '10x_Cylena_and_hunters', type: 'unit', bgPoints: 0, pointCost: 16, factions: ['circle', 'cryx', 'cygnar', 'khador', 'retribution', 'trollbloods']},
   {name: 'Gudrun', type: 'solo', bgPoints: 0, pointCost: 5, factions: ['circle', 'cryx', 'cygnar', 'khador', 'legion', 'trollbloods', 'skorne']},
   {name: 'Rorsh_and_Brine', type: 'solo', bgPoints: 0, pointCost: 15, factions: ['circle', 'cryx', 'cygnar', 'khador', 'protectorate', 'trollbloods', 'skorne', 'legion']},
   {name: 'Reinholdt', type: 'solo', bgPoints: 0, pointCost: 4, factions: ['cygnar', 'khador']},
