@@ -114,6 +114,8 @@ const cards = [
   {name: 'Desecrator', type: 'warjack', bgPoints: 0, pointCost: 14, factions: ['cryx']},
   {name: 'Harrower', type: 'warjack', bgPoints: 0, pointCost: 16, factions: ['cryx']},
   {name: 'Leviathan', type: 'warjack', bgPoints: 0, pointCost: 16, factions: ['cryx']},
+  {name: 'Kraken', type: 'warjack', bgPoints: 0, pointCost: 35, factions: ['cryx']},
+  {name: 'Sepulcher', type: 'warjack', bgPoints: 0, pointCost: 34, factions: ['cryx']}, 
     // units:
   {name: '6x_satyrix_bwitches', type: 'unit', bgPoints: 0, pointCost: 8, factions: ['cryx']},
   {name: '10x_satyrix_bwitches', type: 'unit', bgPoints: 0, pointCost: 13, factions: ['cryx']},
@@ -121,7 +123,7 @@ const cards = [
   {name: '6x_bane_warriors', type: 'unit', bgPoints: 0, pointCost: 10, factions: ['cryx']},
   {name: '10x_bane_warriors', type: 'unit', bgPoints: 0, pointCost: 16, factions: ['cryx']},
   {name: '6x_bane_warriors+officer', type: 'unit', bgPoints: 0, pointCost: 15, factions: ['cryx']},
-  {name: '10x_bane_warriors+officer', type: 'unit', bgPoints: 0, pointCost: 22, factions: ['cryx']},
+  {name: '10x_bane_warriors+officer', type: 'unit', bgPoints: 0, pointCost: 21, factions: ['cryx']},
   {name: '5x_bane_riders', type: 'unit', bgPoints: 0, pointCost: 20, factions: ['cryx']},
   {name: '3x_bane_riders', type: 'unit', bgPoints: 0, pointCost: 12, factions: ['cryx']},
     // solos:
@@ -129,6 +131,7 @@ const cards = [
   {name: 'Tartarus', type: 'solo', bgPoints: 0, pointCost: 6, factions: ['cryx']},
   {name: 'Pistol_wraith', type: 'solo', bgPoints: 0, pointCost: 5, factions: ['cryx']},
   {name: 'Necrotech', type: 'solo', bgPoints: 0, pointCost: 2, factions: ['cryx']},
+  {name: 'Wraith engine', type: 'solo', bgPoints: 0, pointCost: 15, factions: ['cryx']},
   /* or Crucible Guard, Cryx, Cygnar, Khador, or Protectorate. */
   // Mercenaries and Minion
   
