@@ -50,6 +50,7 @@ const cards = [
   {name: 'Adri', type: 'warlock', bgPoints: 32, pointCost: 0, factions: ['circle']},
   {name: 'Mohsar', type: 'warlock', bgPoints: 27, pointCost: 0, factions: ['circle']},
   {name: 'Baldur', type: 'warlock', bgPoints: 31, pointCost: 0, factions: ['circle']},
+  {name: 'Tanith', type: 'warlock', bgPoints: 31, pointCost: 0, factions: ['circle']},
     // warbeasts:
   {name: 'Feral_Warpwolf', type: 'warbeast', bgPoints: 0, pointCost: 14, factions: ['circle']},
   {name: 'Pureblood_Warpwolf', type: 'warbeast', bgPoints: 0, pointCost: 15, factions: ['circle']},
@@ -144,7 +145,7 @@ const cards = [
   {name: '10x_Cylena_and_hunters', type: 'unit', bgPoints: 0, pointCost: 16, factions: ['circle', 'cryx', 'cygnar', 'khador', 'retribution', 'trollbloods']},
   {name: 'Gudrun', type: 'solo', bgPoints: 0, pointCost: 5, factions: ['circle', 'cryx', 'cygnar', 'khador', 'legion', 'trollbloods', 'skorne']},
   {name: 'Rorsh_and_Brine', type: 'solo', bgPoints: 0, pointCost: 14, factions: ['circle', 'cryx', 'cygnar', 'khador', 'protectorate', 'trollbloods', 'skorne', 'legion']},
-  {name: 'Reinholdt', type: 'solo', bgPoints: 0, pointCost: 4, factions: ['cygnar', 'khador']},
+  {name: 'Reinholdt', type: 'solo', bgPoints: 0, pointCost: 3, factions: ['cygnar', 'khador']},
   {name: 'Dahlia_and_Skarath', type: 'solo', bgPoints: 0, pointCost: 16, factions: ['circle', 'retribution', 'trollbloods']},
   {name: 'Eiryss1', type: 'solo', bgPoints: 0, pointCost: 6, factions: ['cygnar', 'khador', 'protectorate', 'retribution']},
   {name: 'WrongEye_and_Snapjaw', type: 'solo', bgPoints: 0, pointCost: 16, factions: ['circle', 'cryx', 'trollbloods', 'skorne', 'legion']},
