@@ -22,7 +22,7 @@ const cards = [
   {name: '10x_Stormguard', type: 'unit', bgPoints: 0, pointCost: 15, factions: ['cygnar']},
   {name: 'Black_13', type: 'unit', bgPoints: 0, pointCost: 7, factions: ['cygnar']},
     // solos:,
-  {name: 'Jr_warcaster', type: 'solo', bgPoints: 0, pointCost: 4, factions: ['cygnar']},
+  {name: 'Jr_warcaster', type: 'solo', bgPoints: 0, pointCost: 3, factions: ['cygnar']},
   {name: 'Arcane_tempest_rifleman', type: 'solo', bgPoints: 0, pointCost: 3, factions: ['cygnar']},
   {name: 'Patrol dog', type: 'solo', bgPoints: 0, pointCost: 1, factions: ['cygnar']},
   
