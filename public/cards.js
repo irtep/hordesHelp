@@ -5,6 +5,7 @@ const cards = [
   {name: 'Stryker1', type: 'warcaster', bgPoints: 30, pointCost: 0, factions: ['cygnar']},
   {name: 'Caine2', type: 'warcaster', bgPoints: 27, pointCost: 0, factions: ['cygnar']},
   {name: 'Maddox1', type: 'warcaster', bgPoints: 30, pointCost: 0, factions: ['cygnar']},
+  {name: 'Nemo2', type: 'warcaster', bgPoints: 26, pointCost: 0, factions: ['cygnar']},
     // warjacks:
   {name: 'Defender', type: 'warjack', bgPoints: 0, pointCost: 14, factions: ['cygnar']},
   {name: 'Avenger', type: 'warjack', bgPoints: 0, pointCost: 15, factions: ['cygnar']},
