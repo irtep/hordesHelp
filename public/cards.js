@@ -41,6 +41,9 @@ const cards = [
     // units:
   {name: '6x_Fennblades', type: 'unit', bgPoints: 0, pointCost: 8, factions: ['trollbloods']},
   {name: '10x_Fennblades', type: 'unit', bgPoints: 0, pointCost: 13, factions: ['trollbloods']},
+  {name: '3x_Champions', type: 'unit', bgPoints: 0, pointCost: 10, factions: ['trollbloods']},
+  {name: '5x_Champions', type: 'unit', bgPoints: 0, pointCost: 16, factions: ['trollbloods']},
+  {name: '5x_Champions_and_Skaldi', type: 'unit', bgPoints: 0, pointCost: 19, factions: ['trollbloods']},
   {name: 'Thumper_crew', type: 'unit', bgPoints: 0, pointCost: 5, factions: ['trollbloods']},
   
     // solos:  
