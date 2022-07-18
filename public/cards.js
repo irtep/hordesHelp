@@ -129,8 +129,8 @@ const cards = [
   {name: '10x_satyrix_bw+commander', type: 'unit', bgPoints: 0, pointCost: 15, factions: ['cryx']},
   {name: '6x_bane_warriors', type: 'unit', bgPoints: 0, pointCost: 8, factions: ['cryx']},
   {name: '10x_bane_warriors', type: 'unit', bgPoints: 0, pointCost: 14, factions: ['cryx']},
-  {name: '6x_bane_warriors+officer', type: 'unit', bgPoints: 0, pointCost: 15, factions: ['cryx']},
-  {name: '10x_bane_warriors+officer', type: 'unit', bgPoints: 0, pointCost: 21, factions: ['cryx']},
+  {name: '6x_bane_warriors+officer', type: 'unit', bgPoints: 0, pointCost: 13, factions: ['cryx']},
+  {name: '10x_bane_warriors+officer', type: 'unit', bgPoints: 0, pointCost: 19, factions: ['cryx']},
   {name: '5x_bane_riders', type: 'unit', bgPoints: 0, pointCost: 17, factions: ['cryx']},
   {name: '3x_bane_riders', type: 'unit', bgPoints: 0, pointCost: 11, factions: ['cryx']},
     // solos:
